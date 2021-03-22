@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Space Shooter</string>
+    <string name="start">Начать игру!</string>
+    <string name="W">W</string>
+    <string name="L">A</string>
+    <string name="R">D</string>
+    <string name="S">S</string>
+</resources>
