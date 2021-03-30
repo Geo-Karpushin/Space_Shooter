@@ -14,6 +14,7 @@ import java.util.Random;
 public class Game_Draw_Thread extends Thread {
     private SurfaceHolder surfaceHolder;
     private Matrix matrixSpace;
+    Matrix matrix = new Matrix();
     private Paint pt = new Paint();
     Random random = new Random();
     private volatile boolean running = true;
@@ -47,9 +48,13 @@ public class Game_Draw_Thread extends Thread {
                 try {
                     canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), backgroundPaint);
                     canvas.drawBitmap(space, Content.player.x, Content.player.y, backgroundPaint);
-                    canvas.drawBitmap(player, 300, 600, backgroundPaint);
+                    //matrix.postRotate(Content.player.angle);
+                   // player = Bitmap.createBitmap(player, 0, 0, player.getWidth(), player.getHeight(), matrix, true);
+                    Content.player.x += Content.player.speed;
+                    canvas.drawBitmap(Content.player.rotate(player, Content.player.angle), 300, 600, backgroundPaint);
                     canvas.drawText(String.valueOf(Content.player.x), 50, 50, pt);
                     canvas.drawText(String.valueOf(Content.player.y), 50, 100, pt);
+                    canvas.drawText(String.valueOf(Content.player.angle), 50, 250, pt);
                 } finally {
                     surfaceHolder.unlockCanvasAndPost(canvas);
                 }

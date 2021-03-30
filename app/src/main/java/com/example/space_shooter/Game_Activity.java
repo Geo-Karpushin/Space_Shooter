@@ -23,7 +23,8 @@ public class Game_Activity extends AppCompatActivity {
             @Override
             public void onMove(int angle, int strength) {
                 Content.player.angle = angle;
-                Log.d("STRENGTH", String.valueOf(strength));
+                Log.d("ANGLE", "Angle: " + String.valueOf(Content.player.angle) + ", player angle: " + String.valueOf(angle));
+                Content.player.speed = Content.player.normal_speed*(Float.valueOf(strength)/100);
             }
         });
        /* w = findViewById(R.id.top);
