@@ -50,7 +50,8 @@ public class Game_Draw_Thread extends Thread {
                     canvas.drawBitmap(space, Content.player.x, Content.player.y, backgroundPaint);
                     //matrix.postRotate(Content.player.angle);
                    // player = Bitmap.createBitmap(player, 0, 0, player.getWidth(), player.getHeight(), matrix, true);
-                    Content.player.x += Content.player.speed;
+                    Content.player.x += -Content.player.vx;
+                    Content.player.y += -Content.player.vy;
                     canvas.drawBitmap(Content.player.rotate(player, Content.player.angle), 300, 600, backgroundPaint);
                     canvas.drawText(String.valueOf(Content.player.x), 50, 50, pt);
                     canvas.drawText(String.valueOf(Content.player.y), 50, 100, pt);

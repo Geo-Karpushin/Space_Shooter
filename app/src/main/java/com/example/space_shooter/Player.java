@@ -6,10 +6,10 @@ import android.graphics.Matrix;
 public class Player {
     float x = -512f;
     float y = -404f;
-    int angle = 90;
-    int angle1 = 90;
-    float speed = 0;
-    float normal_speed = 10;
+    float vx = 0;
+    float vy = 0;
+    int angle = 0;
+    float normal_speed = 25;
 
     public Bitmap rotate(Bitmap source, float angleR) {
         Matrix matrix = new Matrix();

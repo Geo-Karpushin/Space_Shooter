@@ -22,9 +22,14 @@ public class Game_Activity extends AppCompatActivity {
         joystick.setOnMoveListener(new JoystickView.OnMoveListener() {
             @Override
             public void onMove(int angle, int strength) {
-                Content.player.angle = angle;
+                if(strength != 0 && angle != 0)
+                {
+                    Content.player.angle = angle;
+                }
                 Log.d("ANGLE", "Angle: " + String.valueOf(Content.player.angle) + ", player angle: " + String.valueOf(angle));
-                Content.player.speed = Content.player.normal_speed*(Float.valueOf(strength)/100);
+                float speed = Content.player.normal_speed*(Float.valueOf(strength)/100);
+                Content.player.vx = (float) (speed * Math.cos(Math.toRadians((angle - 90 + 360) % 360)));
+                Content.player.vy = (float) (speed * Math.sin(Math.toRadians((angle - 90 + 360) % 360)));
             }
         });
        /* w = findViewById(R.id.top);
