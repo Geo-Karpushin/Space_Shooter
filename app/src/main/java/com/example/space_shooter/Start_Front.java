@@ -5,6 +5,8 @@ public class Start_Front {
     float x1 = 0f;
     float x2 = -2880f;
     float y = 0f;
+    float y1 = 0f;
+    float y2 = -1800f;
     public boolean isInMove;
 
     public void Proverka()
@@ -13,6 +15,19 @@ public class Start_Front {
             x1 = -2880;
         if(x2>=2880)
             x2 = -2880;
+        if(y1>=1800)
+            y1 = -1800;
+        if(y2>=1800)
+            y2 = -1800;
+
+        if(x1<=-2880)
+            x1 = 2880;
+        if(x2<=-2880)
+            x2 = 2880;
+        if(y1<=-1800)
+            y1 = 1800;
+        if(y2<=-1800)
+            y2 = 1800;
     }
 
     public Start_Front(boolean move){
