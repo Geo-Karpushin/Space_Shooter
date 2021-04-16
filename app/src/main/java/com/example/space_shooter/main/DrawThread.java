@@ -1,4 +1,4 @@
-package com.example.space_shooter;
+package com.example.space_shooter.main;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -13,6 +13,9 @@ import android.util.Log;
 import android.os.Bundle;
 import android.view.SurfaceHolder;
 import android.widget.TextView;
+
+import com.example.space_shooter.Content;
+import com.example.space_shooter.R;
 
 public class DrawThread extends Thread {
 

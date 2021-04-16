@@ -1,10 +1,10 @@
-package com.example.space_shooter;
+package com.example.space_shooter.Game;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 
 public class Enemy {
-    float normal_speed = 25;
+    float normal_speed = 20;
     float x, y;
     float vx = normal_speed;
     float vy = normal_speed;

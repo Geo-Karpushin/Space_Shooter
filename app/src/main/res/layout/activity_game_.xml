@@ -6,12 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".Game_Activity">
 
-    <com.example.space_shooter.Game_Draw
+    <com.example.space_shooter.Game.Game_Draw
         android:id="@+id/mydrawg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></com.example.space_shooter.Game_Draw>
+        app:layout_constraintTop_toTopOf="parent"></com.example.space_shooter.Game.Game_Draw>
 
     <io.github.controlwear.virtual.joystick.android.JoystickView
         android:id="@+id/joystick"

@@ -14,7 +14,7 @@ public class Game_Activity extends AppCompatActivity {
     Button w,s,a,d;
     io.github.controlwear.virtual.joystick.android.JoystickView joystick;
 
-   // @Override
+    // @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_);
@@ -33,31 +33,31 @@ public class Game_Activity extends AppCompatActivity {
             }
         });
        /* w = findViewById(R.id.top);
-        s = findViewById(R.id.down);
-        a = findViewById(R.id.left);
-        d = findViewById(R.id.right);
-        w.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View w) {
-                Content.player.y-=10;
+ s = findViewById(R.id.down);
+ a = findViewById(R.id.left);
+ d = findViewById(R.id.right);
+ w.setOnClickListener(new View.OnClickListener(){
+ @Override
+ public void onClick(View w) {
+ Content.player.y-=10;
             }
         });
-        a.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View w) {
-                Content.player.x-=10;
+ a.setOnClickListener(new View.OnClickListener(){
+ @Override
+ public void onClick(View w) {
+ Content.player.x-=10;
             }
         });
-        s.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View w) {
-                Content.player.y+=10;
+ s.setOnClickListener(new View.OnClickListener(){
+ @Override
+ public void onClick(View w) {
+ Content.player.y+=10;
             }
         });
-        d.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View w) {
-                Content.player.x+=10;
+ d.setOnClickListener(new View.OnClickListener(){
+ @Override
+ public void onClick(View w) {
+ Content.player.x+=10;
             }
         });*/
     }

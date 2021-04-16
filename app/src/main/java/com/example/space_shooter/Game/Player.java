@@ -1,15 +1,15 @@
-package com.example.space_shooter;
+package com.example.space_shooter.Game;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 
 public class Player {
-    float x = -512f;
-    float y = -404f;
-    float vx = 0;
-    float vy = 0;
-    int angle = 0;
-    float normal_speed = 25;
+    public float x = -512f;
+    public float y = -404f;
+    public float vx = 0;
+    public float vy = 0;
+    public int angle = 0;
+    public float normal_speed = 25;
 
     public Bitmap rotate(Bitmap source, float angleR) {
         Matrix matrix = new Matrix();

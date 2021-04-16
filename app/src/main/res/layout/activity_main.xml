@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.example.space_shooter.MyDraw
+    <com.example.space_shooter.main.MyDraw
         android:id="@+id/myview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-    </com.example.space_shooter.MyDraw>
+    </com.example.space_shooter.main.MyDraw>
 
     <Button
         android:id="@+id/enter"

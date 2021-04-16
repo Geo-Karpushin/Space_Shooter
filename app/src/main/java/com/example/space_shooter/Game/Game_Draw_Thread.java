@@ -1,4 +1,4 @@
-package com.example.space_shooter;
+package com.example.space_shooter.Game;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,6 +10,9 @@ import android.graphics.Paint;
 import android.util.Log;
 import android.view.SurfaceHolder;
 
+import com.example.space_shooter.Content;
+import com.example.space_shooter.R;
+
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -17,6 +20,7 @@ public class Game_Draw_Thread extends Thread {
     private SurfaceHolder surfaceHolder;
     private Matrix matrixSpace;
     Matrix matrix = new Matrix();
+    Explosion explosion = new Explosion();
     private Paint pt = new Paint();
     Random random = new Random();
     private volatile boolean running = true;
@@ -66,25 +70,41 @@ public class Game_Draw_Thread extends Thread {
                     //matrix.postRotate(Content.player.angle);
                     // player = Bitmap.createBitmap(player, 0, 0, player.getWidth(), player.getHeight(), matrix, true);
 
-                    for (int i = 0; i < 10; i++) {
+                    for (int i = 0; i <= 10; i++) {
                         Enemy e = enemyList.get(i);
 
-                        float d = (float) Math.sqrt(Math.pow(e.x - Content.player.x, 2) + Math.pow(e.y - Content.player.y, 2));
-                        e.vx = e.normal_speed * (Content.player.x - e.x) / d;
-                        e.vy = e.normal_speed * (Content.player.y - e.y) / d;
+                        float d = (float)(Math.sqrt(Math.pow(e.x - 300, 2) + Math.pow(e.y - 600, 2)));
+
+                        if(d>500) {
+                            e.vx = e.normal_speed * (300 - e.x) / d - Content.player.vx;
+                            e.vy = e.normal_speed * (600 - e.y) / d - Content.player.vy;
+                        }
+                        else {
+                            e.vx = 0 - Content.player.vx;
+                            e.vy = 0 - Content.player.vy;
+                        }
 
                         enemyList.set(i, e);
+                    }
+
+                    for (Enemy enemyThis : enemyList) {
+                        for (Enemy enemyAll : enemyList) {
+                            float d = (float)(Math.sqrt(Math.pow(enemyThis.x - enemyAll.x, 2) + Math.pow(enemyThis.y - enemyAll.y, 2)));
+                            if (d <= 100){
+                            }
+                        }
                     }
 
                     for(int i = 0; i <= 10; i++){
                         Enemy e = enemyList.get(i);
 
-                        e.x += -e.vx;
-                        e.y += -e.vy;
+                        e.x += e.vx;
+                        e.y += e.vy;
                         canvas.drawBitmap(e.rotate(enemy, e.angle), e.x, e.y, backgroundPaint);
 
                         enemyList.set(i, e);
                     }
+
                     Content.player.x += -Content.player.vx;
                     Content.player.y += -Content.player.vy;
                     canvas.drawBitmap(Content.player.rotate(player, Content.player.angle), 300, 600, backgroundPaint);
