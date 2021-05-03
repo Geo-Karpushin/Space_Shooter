@@ -41,6 +41,7 @@ public class Game_Activity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 Content.player.shoot_mode = progress;
+                Log.d("MODE", String.valueOf(progress));
             }
 
             @Override

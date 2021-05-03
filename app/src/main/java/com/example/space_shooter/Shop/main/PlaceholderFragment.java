@@ -59,20 +59,9 @@ public class PlaceholderFragment extends Fragment {
             @Override
             public void onChanged(String s) {
                 textView.setText(s);
-                if(Integer.valueOf(s)==1) {
-                    imageView.setImageResource(R.drawable.test1);
-                }
-                else if(Integer.valueOf(s)==2) {
-                    imageView.setImageResource(R.drawable.test2);
-                }
-                else if(Integer.valueOf(s)==3) {
-                    imageView.setImageResource(R.drawable.test3);
-                }
-                else{
-                    Snackbar.make(root, "ERROR! This Section not exist!", Snackbar.LENGTH_LONG)
-                            .setAction("Error #404", null).show();
-                    imageView.setImageResource(R.drawable.enemy);
-                }
+                String name = "test" + s;
+                int holderint = getResources().getIdentifier(name, "drawable", getContext().getPackageName());
+                imageView.setImageResource(holderint);
             }
         });
         return root;
