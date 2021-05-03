@@ -4,12 +4,14 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 
 public class Player {
+    public int shoot_mode = 0;
     public float x = -512f;
     public float y = -404f;
     public float vx = 0;
     public float vy = 0;
     public int angle = 0;
     public float normal_speed = 25;
+    public boolean canShoot = false;
 
     public Bitmap rotate(Bitmap source, float angleR) {
         Matrix matrix = new Matrix();

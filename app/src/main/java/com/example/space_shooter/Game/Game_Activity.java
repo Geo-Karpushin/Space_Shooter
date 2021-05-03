@@ -1,4 +1,4 @@
-package com.example.space_shooter;
+package com.example.space_shooter.Game;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,19 +6,24 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+
+import com.example.space_shooter.Content;
+import com.example.space_shooter.R;
 
 import io.github.controlwear.virtual.joystick.android.JoystickView;
 
 public class Game_Activity extends AppCompatActivity {
-
-    Button w,s,a,d;
     io.github.controlwear.virtual.joystick.android.JoystickView joystick;
+    SeekBar shootMode;
 
     // @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_);
         joystick = findViewById(R.id.joystick);
+        shootMode = findViewById(R.id.shootMode);
         joystick.setOnMoveListener(new JoystickView.OnMoveListener() {
             @Override
             public void onMove(int angle, int strength) {
@@ -32,33 +37,21 @@ public class Game_Activity extends AppCompatActivity {
                 Content.player.vy = (float) (speed * Math.sin(Math.toRadians((angle - 90 + 360) % 360)));
             }
         });
-       /* w = findViewById(R.id.top);
- s = findViewById(R.id.down);
- a = findViewById(R.id.left);
- d = findViewById(R.id.right);
- w.setOnClickListener(new View.OnClickListener(){
- @Override
- public void onClick(View w) {
- Content.player.y-=10;
+        shootMode.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                Content.player.shoot_mode = progress;
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
             }
         });
- a.setOnClickListener(new View.OnClickListener(){
- @Override
- public void onClick(View w) {
- Content.player.x-=10;
-            }
-        });
- s.setOnClickListener(new View.OnClickListener(){
- @Override
- public void onClick(View w) {
- Content.player.y+=10;
-            }
-        });
- d.setOnClickListener(new View.OnClickListener(){
- @Override
- public void onClick(View w) {
- Content.player.x+=10;
-            }
-        });*/
     }
 }

@@ -5,6 +5,8 @@ import android.graphics.Matrix;
 
 public class Enemy {
     float normal_speed = 20;
+    int maxBulets = 5;
+
     float x, y;
     float vx = normal_speed;
     float vy = normal_speed;

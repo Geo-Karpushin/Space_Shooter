@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Game_Activity">
+    tools:context=".Game.Game_Activity">
 
     <com.example.space_shooter.Game.Game_Draw
         android:id="@+id/mydrawg"
@@ -15,18 +15,46 @@
 
     <io.github.controlwear.virtual.joystick.android.JoystickView
         android:id="@+id/joystick"
-        android:layout_width="273dp"
-        android:layout_height="298dp"
-        android:layout_marginEnd="100dp"
+        android:layout_width="276dp"
+        android:layout_height="253dp"
         android:rotation="90"
         android:rotationX="-180"
-        app:JV_backgroundColor="#009688"
-        app:JV_borderColor="#00796B"
+        android:visibility="visible"
+        app:JV_autoReCenterButton="true"
+        app:JV_backgroundColor="#272727"
+        app:JV_borderColor="#414343"
         app:JV_borderWidth="4dp"
-        app:JV_buttonColor="#FF6E40"
+        app:JV_buttonColor="#050505"
         app:JV_buttonSizeRatio="15%"
         app:JV_fixedCenter="false"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="348dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="5dp"
+        android:max="100"
+        android:progress="0"
+        android:progressTint="#028007"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <SeekBar
+        android:id="@+id/shootMode"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="379dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="370dp"
+        android:max="3"
+        android:progress="0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
