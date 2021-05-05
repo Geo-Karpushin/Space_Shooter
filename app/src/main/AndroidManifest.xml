@@ -13,7 +13,7 @@
             android:name=".Shop.ShopActivity"
             android:label="@string/title_activity_shop"
             android:theme="@style/Theme.Space_Shooter.NoActionBar"></activity>
-        <activity android:name=".Game.Game_Activity" />
+        <activity android:name=".Game.GameActivity" />
         <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

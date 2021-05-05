@@ -1,6 +1,6 @@
 package com.example.space_shooter.main;
 
-public class Start_Front {
+public class StartFront {
     private double speed = 0.1;
     public float x1 = 0f;
     public float x2 = -2880f;
@@ -17,7 +17,7 @@ public class Start_Front {
             x2 = -2880;
     }
 
-    public Start_Front(boolean move){
+    public StartFront(boolean move){
         isInMove = move;
     }
 }

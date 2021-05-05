@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.space_shooter.Content;
 import com.example.space_shooter.R;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -55,13 +57,38 @@ public class PlaceholderFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_shop, container, false);
         final TextView textView = root.findViewById(R.id.section_label);
         final ImageView imageView = root.findViewById(R.id.imageView);
+        final Button buyButton = root.findViewById(R.id.buy);
         pageViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                textView.setText(s);
-                String name = "test" + s;
-                int holderint = getResources().getIdentifier(name, "drawable", getContext().getPackageName());
-                imageView.setImageResource(holderint);
+                if(Integer.valueOf(s) > 0 && Integer.valueOf(s) <= 3){
+                    String name = "player" + s;
+                    int holderImg = getResources().getIdentifier(name, "drawable", getContext().getPackageName());
+                    int holderString = getResources().getIdentifier(name, "string", getContext().getPackageName());
+                    textView.setText(holderString);
+                    imageView.setImageResource(holderImg);
+                }
+                else{
+                    Snackbar.make(root, "Произошла непредвиденная ошибка! Этого файла нету в игре или он добавлен вручную.", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    try{
+                        String name = "player" + s;
+                        int holderString = getResources().getIdentifier(name, "string", getContext().getPackageName());
+                        textView.setText(holderString);
+                    }catch (Exception e){
+                        textView.setText(s + ". Exception "+e);
+                    }
+
+                    try{
+                        String name = "player" + s;
+                        int holderImg = getResources().getIdentifier(name, "drawable", getContext().getPackageName());
+                        imageView.setImageResource(holderImg);
+                    } catch (Exception e) {
+                        imageView.setImageResource(R.mipmap.ic_launcher);
+                    }
+                }
+
+                Content.player.playerPreImg = Integer.valueOf(s);
             }
         });
         return root;

@@ -12,4 +12,9 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="player1">Черный кот</string>
+    <string name="player2">Лавовый демон</string>
+    <string name="player3">Морской лев</string>
+    <string name="buy">Установить</string>
+    <string name="Shop">Выбор камуфляжа</string>
 </resources>

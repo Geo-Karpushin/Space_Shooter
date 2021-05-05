@@ -5,29 +5,27 @@ import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-import com.example.space_shooter.Game.Game_Draw_Thread;
+public class GameDraw extends SurfaceView implements SurfaceHolder.Callback {
+    private GameDrawThread drawThread;
 
-public class Game_Draw extends SurfaceView implements SurfaceHolder.Callback {
-    private Game_Draw_Thread drawThread;
-
-    public Game_Draw(Context context) {
+    public GameDraw(Context context) {
         super(context);
         getHolder().addCallback(this);
     }
 
-    public Game_Draw(Context context, AttributeSet attrs) {
+    public GameDraw(Context context, AttributeSet attrs) {
         super(context, attrs);
         getHolder().addCallback(this);
     }
 
-    public Game_Draw(Context context, AttributeSet attrs, int defStyle) {
+    public GameDraw(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         getHolder().addCallback(this);
     }
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        drawThread = new Game_Draw_Thread(getContext(),getHolder());
+        drawThread = new GameDrawThread(getContext(),getHolder());
         drawThread.start();
     }
 

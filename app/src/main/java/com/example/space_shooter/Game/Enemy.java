@@ -4,12 +4,12 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 
 public class Enemy {
-    float normal_speed = 20;
+    float normalSpeed = 20;
     int maxBulets = 5;
 
     float x, y;
-    float vx = normal_speed;
-    float vy = normal_speed;
+    float vx;
+    float vy;
     int angle = 0;
 
     public Enemy(double x, double y, double angle)
