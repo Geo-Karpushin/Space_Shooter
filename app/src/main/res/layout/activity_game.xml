@@ -48,13 +48,13 @@
     <SeekBar
         android:id="@+id/shootMode"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
-        android:layout_width="379dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="370dp"
+        android:layout_width="378dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="16dp"
         android:max="3"
         android:progress="0"
+        app:layout_constraintBottom_toTopOf="@+id/joystick"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

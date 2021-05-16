@@ -1,32 +1,24 @@
 package com.example.space_shooter.Game;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
+import android.view.Display;
 import android.widget.SeekBar;
-
 import com.example.space_shooter.Content;
 import com.example.space_shooter.R;
-import com.example.space_shooter.Shop.ShopActivity;
 import com.example.space_shooter.main.MainActivity;
-
 import io.github.controlwear.virtual.joystick.android.JoystickView;
 
 public class GameActivity extends AppCompatActivity {
     io.github.controlwear.virtual.joystick.android.JoystickView joystick;
     SeekBar shootMode;
 
-    // @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_);
+        setContentView(R.layout.activity_game);
         joystick = findViewById(R.id.joystick);
         shootMode = findViewById(R.id.shootMode);
         joystick.setOnMoveListener(new JoystickView.OnMoveListener() {
@@ -46,7 +38,6 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 Content.player.shootMode = progress;
-                Log.d("MODE", String.valueOf(progress));
             }
 
             @Override
@@ -59,5 +50,12 @@ public class GameActivity extends AppCompatActivity {
 
             }
         });
+
+
+        Display display = getWindowManager().getDefaultDisplay();
+        DisplayMetrics metricsB = new DisplayMetrics();
+        display.getMetrics(metricsB);
+        Content.info.displayWidth = metricsB.widthPixels;
+        Content.info.displayHeight = metricsB.heightPixels;
     }
 }

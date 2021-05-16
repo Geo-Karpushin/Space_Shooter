@@ -3,6 +3,7 @@ package com.example.space_shooter.Shop.main;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +26,7 @@ import com.google.android.material.snackbar.Snackbar;
  */
 public class PlaceholderFragment extends Fragment {
 
-    private static final String ARG_SECTION_NUMBER = "section_number";
+    private static final String ARG_SECTION_NUMBER = "sectionNumber";
 
     private PageViewModel pageViewModel;
 
@@ -57,7 +58,6 @@ public class PlaceholderFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_shop, container, false);
         final TextView textView = root.findViewById(R.id.section_label);
         final ImageView imageView = root.findViewById(R.id.imageView);
-        final Button buyButton = root.findViewById(R.id.buy);
         pageViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
@@ -87,8 +87,6 @@ public class PlaceholderFragment extends Fragment {
                         imageView.setImageResource(R.mipmap.ic_launcher);
                     }
                 }
-
-                Content.player.playerPreImg = Integer.valueOf(s);
             }
         });
         return root;
