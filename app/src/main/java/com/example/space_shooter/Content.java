@@ -1,5 +1,4 @@
 package com.example.space_shooter;
-import com.example.space_shooter.Game.GameInfo;
 import com.example.space_shooter.Game.Player;
 import com.example.space_shooter.main.StartFront;
 

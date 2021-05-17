@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         enter = findViewById(R.id.enter);
-        test = findViewById(R.id.test);
+        test = findViewById(R.id.shop);
         enter.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i;

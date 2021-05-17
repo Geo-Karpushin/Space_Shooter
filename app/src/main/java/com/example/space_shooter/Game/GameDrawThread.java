@@ -28,7 +28,6 @@ public class GameDrawThread extends Thread {
     private Bitmap enemy, player, bullet, star1;
     private long bulletTimer, bulletInterval1 = 1500, bulletInterval2 = 1000, bulletInterval3 = 500;
     private ArrayList<Explosion> exps = new ArrayList<>();
-    private int pX = (Content.info.displayWidth/2)-100, pY = (Content.info.displayHeight/2)-500;
 
     public GameDrawThread(Context context, SurfaceHolder surfaceHolder) {
         backgroundPaint.setColor(Color.BLACK);
@@ -52,14 +51,13 @@ public class GameDrawThread extends Thread {
             do {
                 rx = (float) ((Math.random() * ((2046 + 2046) + 1)) - 2046);
                 ry = (float) ((Math.random() * ((1616 + 1616) + 1)) - 1616);
-            } while (Math.sqrt(Math.pow(rx - pX, 2) + Math.pow(ry - pY, 2)) < 500);
+            } while (Math.sqrt(Math.pow(rx - Content.info.pX, 2) + Math.pow(ry - Content.info.pY, 2)) < 500);
             Enemy enemy = new Enemy(rx, ry, (Math.random() * 361));
             enemyList.add(enemy);
         }
 
-        //for(int i = 0; i < ((Math.random() * ((2046 + 2046) + 1)) - 2046)){
+        Content.info.recountCoordinates();
 
-       // }
         this.surfaceHolder = surfaceHolder;
     }
 
@@ -75,7 +73,7 @@ public class GameDrawThread extends Thread {
             if (canvas != null) {
                 try {
                     if (Content.info.end && System.currentTimeMillis() - Content.info.endGameTimer > 3000) {
-                        running = false;
+                       // running = false;
                         Intent i = new Intent(gContext, MainActivity.class);
                         gContext.startActivity(i);
                         ((Activity) gContext).finish();
@@ -88,11 +86,11 @@ public class GameDrawThread extends Thread {
                     for (int i = 0; i < enemyList.size(); i++) {
                         Enemy e = enemyList.get(i);
 
-                        float d = (float)(Math.sqrt(Math.pow(e.x - pX, 2) + Math.pow(e.y - pY, 2)));
+                        float d = (float)(Math.sqrt(Math.pow(e.x - Content.info.pX, 2) + Math.pow(e.y - Content.info.pY, 2)));
 
                         if (d > 500) {
-                            e.vx = e.normalSpeed * (pX - e.x) / d - Content.player.vx;
-                            e.vy = e.normalSpeed * (pY - e.y) / d - Content.player.vy;
+                            e.vx = e.normalSpeed * (Content.info.pX - e.x) / d - Content.player.vx;
+                            e.vy = e.normalSpeed * (Content.info.pY - e.y) / d - Content.player.vy;
 
                             e.shootNow = false;
                         } else {
@@ -104,14 +102,14 @@ public class GameDrawThread extends Thread {
 
                        // e.angle = (int) Math.toDegrees(Math.atan2(Content.player.x - e.x, Content.player.y > e.y ? e.y - Content.player.y : Content.player.y - e.y));
 
-                        if(e.x<pX && e.y < pY)
-                          e.angle = (int) -((Math.atan(Math.abs((e.y-pY)/(e.x-pX)))*180)/Math.PI);
-                        else if(e.x<pX && e.y >= pY)
-                            e.angle = (int) ((Math.atan(Math.abs((e.y-pY)/(e.x-pX)))*180)/Math.PI);
-                        else if(e.x>=pX && e.y >= pY)
-                            e.angle = (int) -((Math.atan(Math.abs((e.y-pY)/(e.x-pX)))*180)/Math.PI)-180;
-                        else if(e.x>=pX && e.y < pY)
-                            e.angle = (int) ((Math.atan(Math.abs((e.y-pY)/(e.x-pX)))*180)/Math.PI)-180;
+                        if(e.x<Content.info.pX && e.y < Content.info.pY)
+                          e.angle = (int) -((Math.atan(Math.abs((e.y-Content.info.pY)/(e.x-Content.info.pX)))*180)/Math.PI);
+                        else if(e.x<Content.info.pX && e.y >= Content.info.pY)
+                            e.angle = (int) ((Math.atan(Math.abs((e.y-Content.info.pY)/(e.x-Content.info.pX)))*180)/Math.PI);
+                        else if(e.x>=Content.info.pX && e.y >= Content.info.pY)
+                            e.angle = (int) -((Math.atan(Math.abs((e.y-Content.info.pY)/(e.x-Content.info.pX)))*180)/Math.PI)-180;
+                        else if(e.x>=Content.info.pX && e.y < Content.info.pY)
+                            e.angle = (int) ((Math.atan(Math.abs((e.y-Content.info.pY)/(e.x-Content.info.pX)))*180)/Math.PI)-180;
                         //e.angle = -45;
 
                         if (e.angle < 0){
@@ -128,7 +126,9 @@ public class GameDrawThread extends Thread {
 
                         e.x += e.vx;
                         e.y += e.vy;
-                        canvas.drawBitmap(e.rotate(enemy, e.angle), e.x, e.y, backgroundPaint);
+
+                        if(positionCheck(e.x, e.y))
+                            canvas.drawBitmap(e.rotate(enemy, e.angle), e.x, e.y, backgroundPaint);
 
                         if (System.currentTimeMillis() - e.bulletTimer > 1000 && e.maxBulets > 0 && e.shootNow) {
                             e.bulletTimer = System.currentTimeMillis();
@@ -142,17 +142,17 @@ public class GameDrawThread extends Thread {
                     if (Content.player.shootMode > 0 && !Content.player.canShoot) {
                         if (Content.player.shootMode == 1 && System.currentTimeMillis() - this.bulletTimer > this.bulletInterval1 && !Content.player.canShoot) {
                             this.bulletTimer = System.currentTimeMillis();
-                            Bullet bullet = new Bullet(500, Content.player.angle, (float)pX, (float)pY, false);
+                            Bullet bullet = new Bullet(500, Content.player.angle, (float)Content.info.pX, (float)Content.info.pY, false);
                             activeBullets.add(bullet);
                         }
                         if (Content.player.shootMode == 2 && System.currentTimeMillis() - this.bulletTimer > this.bulletInterval2 && !Content.player.canShoot) {
                             this.bulletTimer = System.currentTimeMillis();
-                            Bullet bullet = new Bullet(250, Content.player.angle, (float)pX, (float)pY, false);
+                            Bullet bullet = new Bullet(250, Content.player.angle, (float)Content.info.pX, (float)Content.info.pY, false);
                             activeBullets.add(bullet);
                         }
                         if (Content.player.shootMode == 3 && System.currentTimeMillis() - this.bulletTimer > this.bulletInterval3 && !Content.player.canShoot) {
                             this.bulletTimer = System.currentTimeMillis();
-                            Bullet bullet = new Bullet(100, Content.player.angle, (float)pX, (float)pY, false);
+                            Bullet bullet = new Bullet(100, Content.player.angle, (float)Content.info.pX, (float)Content.info.pY, false);
                             activeBullets.add(bullet);
                         }
                     }
@@ -180,7 +180,9 @@ public class GameDrawThread extends Thread {
                             delBullets.add(b);
                         }
 
-                        canvas.drawBitmap(b.rotate(bullet, b.angle), b.x, b.y, backgroundPaint);
+                        if(positionCheck(b.x, b.y))
+                            canvas.drawBitmap(b.rotate(bullet, b.angle), b.x, b.y, backgroundPaint);
+
                         activeBullets.set(i, b);
                     }
 
@@ -225,7 +227,8 @@ public class GameDrawThread extends Thread {
                         }
                         exps.set(i, e);
 
-                        canvas.drawBitmap(explosionsList.get(e.explosionState), e.eX, e.eY, backgroundPaint);
+                        if(positionCheck(e.eX, e.eY))
+                            canvas.drawBitmap(explosionsList.get(e.explosionState), e.eX, e.eY, backgroundPaint);
                     }
 
                     for (Explosion e : delExps) {
@@ -240,7 +243,12 @@ public class GameDrawThread extends Thread {
 
                     Content.info.x -= Content.player.vx;
                     Content.info.y -= Content.player.vy;
-                    canvas.drawBitmap(Content.player.rotate(player, Content.player.angle), (float)pX, (float)pY, backgroundPaint);
+
+                    if(positionCheck(Content.info.pX, Content.info.pY))
+                        canvas.drawBitmap(Content.player.rotate(player, Content.player.angle), Content.info.pX, Content.info.pY, backgroundPaint);
+
+                    if(positionCheck(Content.info.displayWidth/2-50, 50))
+                        canvas.drawText(String.valueOf(Content.player.hp), 50, Content.info.displayWidth/2-50, paint);
                 } finally {
                     surfaceHolder.unlockCanvasAndPost(canvas);
                 }
@@ -253,5 +261,12 @@ public class GameDrawThread extends Thread {
         int holderImg = context.getResources().getIdentifier(name, directory,
                 context.getPackageName());
         return holderImg;
+    }
+
+    private boolean positionCheck(float x, float y){
+        boolean result = false;
+        if(x>-100 && x<Content.info.displayWidth+100 && y>-100 && y<Content.info.displayHeight+100)
+            result = true;
+        return result;
     }
 }

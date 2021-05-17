@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#40FFFFFF"
     tools:context=".main.MainActivity">
 
     <com.example.space_shooter.main.MyDraw
@@ -11,24 +12,30 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </com.example.space_shooter.main.MyDraw>
+        app:layout_constraintTop_toTopOf="parent"></com.example.space_shooter.main.MyDraw>
 
     <Button
         android:id="@+id/enter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="32dp"
+        android:background="#40FFFFFF"
+        android:outlineProvider="bounds"
         android:text="@string/start"
-        app:layout_constraintBottom_toTopOf="@+id/test"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/shop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="#FF0000" />
 
     <Button
-        android:id="@+id/test"
+        android:id="@+id/shop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="72dp"
+        android:background="#50FFFFFF"
+        android:outlineProvider="bounds"
         android:text="@string/shop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

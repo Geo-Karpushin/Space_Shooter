@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Display;
+import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import com.example.space_shooter.Content;
 import com.example.space_shooter.R;
@@ -15,12 +16,14 @@ import io.github.controlwear.virtual.joystick.android.JoystickView;
 public class GameActivity extends AppCompatActivity {
     io.github.controlwear.virtual.joystick.android.JoystickView joystick;
     SeekBar shootMode;
+    ProgressBar progressBar;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         joystick = findViewById(R.id.joystick);
         shootMode = findViewById(R.id.shootMode);
+        progressBar = findViewById(R.id.progressBar);
         joystick.setOnMoveListener(new JoystickView.OnMoveListener() {
             @Override
             public void onMove(int angle, int strength) {
@@ -28,7 +31,6 @@ public class GameActivity extends AppCompatActivity {
                 {
                     Content.player.angle = angle;
                 }
-                Log.d("ANGLE", "Angle: " + String.valueOf(Content.player.angle) + ", player angle: " + String.valueOf(angle));
                 float speed = Content.player.normalSpeed*(Float.valueOf(strength)/100);
                 Content.player.vx = (float) (speed * Math.cos(Math.toRadians((angle - 90 + 360) % 360)));
                 Content.player.vy = (float) (speed * Math.sin(Math.toRadians((angle - 90 + 360) % 360)));

@@ -52,6 +52,8 @@ public class ShopActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        Content.player.playerImg = tabs.getSelectedTabPosition()+1;
+        Log.d("PIMG", String.valueOf(Content.player.playerImg));
         i = new Intent(ShopActivity.this, MainActivity.class);
         startActivity(i);
         finish();
