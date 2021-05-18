@@ -229,7 +229,7 @@ public class GameDrawThread extends Thread {
                             delBullets.add(b);
 
                         if(positionCheck(b.x, b.y))
-                            canvas.drawBitmap(b.rotate(bullet, b.angle), b.x, b.y, backgroundPaint);
+                            canvas.drawBitmap(b.rotate(bullet, b.angle), b.x+50, b.y, backgroundPaint);
 
                         activeBullets.set(i, b);
                     }
@@ -243,7 +243,7 @@ public class GameDrawThread extends Thread {
                     for (int i = 0; i < enemyList.size(); i++) {
                         Enemy enemyThis = enemyList.get(i);
                         for (Bullet b : activeBullets) {
-                            if (Math.abs(enemyThis.x - b.x) < 150 && Math.abs(enemyThis.y - b.y) < 150 && b.shooterId != i) {
+                            if (Math.abs(enemyThis.x - b.x) < 100 && Math.abs(enemyThis.y - b.y) < 100 && b.shooterId != i) {
                                 enemyThis.hp -= b.damage;
                                 score+=1;
                                 enemyList.set(i, enemyThis);
