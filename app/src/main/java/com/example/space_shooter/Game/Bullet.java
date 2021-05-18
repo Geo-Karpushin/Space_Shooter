@@ -14,13 +14,13 @@ public class Bullet {
     public float vy = 0;
     public int normalSpeed = 50;
     public long createTime;
-    public boolean enemyBullet;
+    public int shooterId = -1;
 
-    public Bullet(Integer damage, Integer angle, Float x, Float y, boolean enemyBullet){
+    public Bullet(Integer damage, Integer angle, Float x, Float y, int id){
         this.x = x;
         this.y = y;
-        this.enemyBullet = enemyBullet;
         this.damage = damage;
+        this.shooterId = id;
         this.vx = (float)(this.normalSpeed * Math.cos(Math.toRadians((360 - angle + 90) % 360)));
         this.vy = -(float)(this.normalSpeed * Math.sin(Math.toRadians((360 - angle + 90) % 360)));
         if(angle-90>=0) {

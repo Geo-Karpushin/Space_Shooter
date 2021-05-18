@@ -5,14 +5,19 @@ import android.graphics.Matrix;
 
 public class Enemy {
     public float normalSpeed = 20;
-    public int maxBulets = 5;
+    public int maxBulets = 10;
     public float x, y;
     public float vx;
     public float vy;
-    public int angle ;
-    public int hp = 1000;
+    public int angle;
+    public int hp = 500;
+    public boolean obstacleExists = false;
+    public int obstacleId;
+    public int obstacleMinDistance = -1;
+    public boolean playerNear = false;
     public long bulletTimer;
     public boolean shootNow = false;
+    public boolean dodge = true;
 
     public Enemy(double x, double y, double angle) {
         this.angle = (int) angle;

@@ -8,9 +8,9 @@ public class GameInfo {
     public int displayHeight;
     public int pX;
     public int pY;
+   // public boolean started = false;
     public boolean pause = false;
     public boolean end = false;
-    public long endGameTimer;
 
     public void recountCoordinates(){
         pX = (displayWidth/2)-100;

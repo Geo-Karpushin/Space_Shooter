@@ -2,6 +2,7 @@ package com.example.space_shooter.Game;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -11,6 +12,8 @@ import android.widget.SeekBar;
 import com.example.space_shooter.Content;
 import com.example.space_shooter.R;
 import com.example.space_shooter.main.MainActivity;
+import com.google.android.material.snackbar.Snackbar;
+
 import io.github.controlwear.virtual.joystick.android.JoystickView;
 
 public class GameActivity extends AppCompatActivity {
@@ -60,4 +63,10 @@ public class GameActivity extends AppCompatActivity {
         Content.info.displayWidth = metricsB.widthPixels;
         Content.info.displayHeight = metricsB.heightPixels;
     }
+   /* @Override
+    protected void onStart() {
+        super.onStart();
+        Content.info.started = true;
+        Log.d("START","true");
+    }*/
 }

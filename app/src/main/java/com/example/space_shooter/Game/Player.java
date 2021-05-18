@@ -11,8 +11,8 @@ public class Player{
     public float normalSpeed = 25;
     public boolean canShoot = false;
     public int playerImg = 1;
-    public int playerPreImg = 1;
-    public int hp = 1000;
+    public int hp = 10000;
+    public String name;
 
     public Bitmap rotate(Bitmap source, float angleR) {
         Matrix matrix = new Matrix();

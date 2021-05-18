@@ -1,9 +1,13 @@
 package com.example.space_shooter.Game;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+
+import com.example.space_shooter.Content;
 
 public class GameDraw extends SurfaceView implements SurfaceHolder.Callback {
     private GameDrawThread drawThread;

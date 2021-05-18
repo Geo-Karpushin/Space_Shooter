@@ -3,6 +3,7 @@ package com.example.space_shooter.main;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.Button;
 
 import com.example.space_shooter.Game.GameActivity;
 import com.example.space_shooter.R;
+import com.example.space_shooter.SettingsActivity;
 import com.example.space_shooter.Shop.ShopActivity;
 
 public class MainActivity extends AppCompatActivity /*implements View.OnClickListener*/ {
@@ -22,6 +24,14 @@ public class MainActivity extends AppCompatActivity /*implements View.OnClickLis
         setContentView(R.layout.activity_main);
         enter = findViewById(R.id.enter);
         test = findViewById(R.id.shop);
+
+        String name = getSharedPreferences("settings", Context.MODE_PRIVATE).getString("playerName", "");
+        if (name == "") {
+            Intent i = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(i);
+            finish();
+        }
+
         enter.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent i;

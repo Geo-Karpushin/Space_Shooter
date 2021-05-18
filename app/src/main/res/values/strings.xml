@@ -14,4 +14,6 @@
     <string name="buy">Установить</string>
     <string name="shop">Магазин</string>
     <string name="Shop">Выбор камуфляжа</string>
+    <string name="Save">Сохранить</string>
+    <string name="EnterName">Введите ваше имя</string>
 </resources>

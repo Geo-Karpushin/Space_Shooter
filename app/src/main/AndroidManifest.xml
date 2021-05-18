@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Space_Shooter">
+        <activity android:name=".SettingsActivity"></activity>
         <activity
             android:name=".Shop.ShopActivity"
             android:label="@string/title_activity_shop"
-            android:theme="@style/Theme.Space_Shooter.NoActionBar"></activity>
+            android:theme="@style/Theme.Space_Shooter.NoActionBar" />
         <activity android:name=".Game.GameActivity" />
         <activity android:name=".main.MainActivity">
             <intent-filter>
